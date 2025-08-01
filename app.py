@@ -12,28 +12,31 @@ app.secret_key = os.getenv("SECRET_KEY", "some-default-secret")
 def index():
     translated_text = ""
     detected_lang = ""
+
     if "history" not in session:
         session["history"] = []
 
     if request.method == "POST":
-        original_text = request.form["text"]
-        target_lang = request.form["language"]
-        translated_text, detected_lang = translate_text(original_text, target_lang)
+        if request.form.get("action") == "clear":
+            session["history"] = []
+        else:
+            original_text = request.form["text"]
+            target_lang = request.form["language"]
+            translated_text, detected_lang = translate_text(original_text, target_lang)
 
-        # Add translation to history with correct key names for index.html
-        session["history"].insert(0, {
-            "text": original_text,
-            "translated": translated_text,
-            "language": target_lang
-        })
+            session["history"].insert(0, {
+                "text": original_text,
+                "translated": translated_text,
+                "language": target_lang
+            })
 
-        # Limit history to 5 items
-        session["history"] = session["history"][:5]
+            session["history"] = session["history"][:5]
 
     return render_template("index.html",
                            translated_text=translated_text,
                            detected_lang=detected_lang,
                            history=session.get("history", []))
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
