@@ -293,6 +293,25 @@ body.dark-mode .toggle-btn:hover {
   padding: 0.5rem;
   border-radius: 5px;
 }
+.history {
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 12px;
+  background: var(--light-bg, #f8f8f8);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.history ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.history li {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
 
 
 
