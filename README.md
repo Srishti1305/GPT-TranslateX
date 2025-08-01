@@ -1,53 +1,61 @@
 # 🌐 GPT TranslateX
 
-GPT TranslateX is a modern, pastel-themed AI-powered translator web app that translates text into over 25 languages using the **RapidAPI Text Translator API**.
+**GPT TranslateX** is a modern, pastel-themed, AI-powered translator web app that translates text into 25+ languages using the RapidAPI Text Translator API. It features a clean UI, dark/light mode toggle, translation history, and more.
 
 ---
 
 ## 🚀 Features
 
-- 🎨 **Modern pastel UI** with animated buttons and hover effects
-- 🌙 **Light/Dark mode** toggle
-- 🌍 Translate into **25+ languages**
-- 🔄 **Animated spinner** during translation
-- 📋 **Copy translation** with toast notification (no alert popups)
-- 🔍 **Searchable language dropdown**
-- ✅ **Fully responsive** design for all screen sizes
-- 🔐 **API key secured** using `.env`
+- 🎨 **Pastel-Themed Modern UI** with smooth animations and hover effects  
+- 🌙 **Dark/Light Mode Toggle** with localStorage support  
+- 🌍 **Auto Language Detection** from input  
+- 🌐 **Translate into 25+ Languages**  
+- 🔄 **Animated Spinner** while translating  
+- 📋 **Copy to Clipboard** with toast notification (no intrusive alerts)  
+- 🔍 **Searchable Language Dropdown** (via TomSelect)  
+- 🕓 **Recent Translation History** (stored in browser session)  
+- 🗑️ **Clear History Button**  
+- ✅ **Fully Responsive Design**  
+- 🔐 **.env Secured API Key**
 
 ---
 
 ## 📁 Project Structure
 
 GPT-TranslateX/
-├── app.py
-├── translator.py
-├── .env
-├── requirements.txt
+├── app.py # Flask web app logic
+├── translator.py # Translation API logic
+├── .env # Stores API keys securely
+├── requirements.txt # Python dependencies
 ├── static/
-│ ├── style.css
-│ ├── logo.png
-│ └── script.js (optional for future JS functions)
+│ ├── style.css # UI styling
+│ ├── logo.png # App branding logo
+│ └── script.js # (Optional) extra JavaScript functions
 ├── templates/
-│ └── index.html
-└── README.md
+│ └── index.html # Main HTML template
+└── README.md # Project documentation
 
-🌐 API Used
-Text Translator API by RapidAPI
-Endpoint: https://text-translator2.p.rapidapi.com/translate
+## 🌐 API Used
 
+**Text Translator API by RapidAPI**  
+- **Endpoint:** `https://text-translator2.p.rapidapi.com/translate`  
+- **Supports:** Auto language detection and translation to multiple languages
+
+---
 
 📱 Future Enhancements
-🤏 Touch-friendly UI improvements
+🗣️ Speech-to-Text Input
 
-💾 Save translation history
+🔊 Text-to-Speech Output
 
-🗣️ Add speech-to-text input or voice output
+💾 Persistent History Saved Across Sessions
+
+🤏 Touch-Friendly UI Improvements
+
+🌍 Language Detection Confidence Display
 
 📝 License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License — feel free to use and modify it for your needs.
 
 🤝 Credits
-Built with ❤️ using Flask, HTML, CSS and RapidAPI.
-
-
+Built with ❤️ using Flask, HTML, CSS, and RapidAPI
