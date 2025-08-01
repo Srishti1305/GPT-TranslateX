@@ -27,7 +27,8 @@ def index():
             session["history"].insert(0, {
                 "text": original_text,
                 "translated": translated_text,
-                "language": target_lang
+                "source": detected_lang,
+                "target": target_lang
             })
 
             session["history"] = session["history"][:5]
@@ -36,7 +37,6 @@ def index():
                            translated_text=translated_text,
                            detected_lang=detected_lang,
                            history=session.get("history", []))
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
