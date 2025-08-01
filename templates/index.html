@@ -11,13 +11,12 @@
   <img src="{{ url_for('static', filename='logo.png') }}" alt="GPT TranslateX Logo" class="corner-logo">
 
   <!-- Theme Toggle Button -->
-  <button id="themeToggle" class="toggle-btn">
+  <button id="themeToggle" class="toggle-btn themed">
     <span id="toggleIcon">🌙 Dark Mode</span>
   </button>
 
   <div class="container">
     <h1>🌐 GPT TranslateX</h1>
-
     <form method="POST" id="translateForm">
       <label for="text">Enter text to translate:</label>
       <textarea name="text" rows="5" placeholder="Type your text here..." required></textarea>
@@ -58,33 +57,32 @@
 
     {% if translated_text %}
     <div class="output" id="translationBox">
-      <strong>Detected Language:</strong> {{ detected_lang }}<br>
-      <strong>Translated:</strong><br> {{ translated_text }}
+      {{ translated_text }}
     </div>
     <div class="button-group">
       <button onclick="copyText()">📋 Copy Translated Text</button>
     </div>
     {% endif %}
 
+    {% if detected_lang %}
+    <p class="detected-lang">Detected Source Language: <strong>{{ detected_lang }}</strong></p>
+    {% endif %}
+
     {% if history %}
-    <div class="history">
-      <h3>🕓 Recent Translations</h3>
+    <div class="history-panel">
+      <h3>🕘 Recent Translations</h3>
       <ul>
         {% for item in history %}
-          <li>
-            <strong>From ({{ item.source }}) to ({{ item.target }}):</strong><br>
-            <em>{{ item.original }}</em><br>
-            → {{ item.translated }}
-          </li>
+        <li><strong>{{ item.text }}</strong> → <em>{{ item.translated }}</em> ({{ item.language }})</li>
         {% endfor %}
       </ul>
     </div>
     {% endif %}
   </div>
 
-  <!-- Toast Notification -->
   <div id="toast" class="toast">Copied to clipboard ✅</div>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
   <script>
     new TomSelect('#language', {
@@ -113,11 +111,13 @@
       setTimeout(() => toast.classList.remove("show"), 2500);
     }
 
-    // Theme toggle logic
+    // Theme toggle
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "dark") {
       document.body.classList.add("dark-mode");
       toggleIcon.textContent = "☀️ Light Mode";
+    } else {
+      toggleIcon.textContent = "🌙 Dark Mode";
     }
 
     toggleBtn.addEventListener("click", () => {
