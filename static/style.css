@@ -234,6 +234,35 @@ body.dark-mode .output {
 .toggle-btn:hover {
   transform: scale(1.2);
 }
+/* Toggle Button Styled Like Translate Button */
+.toggle-btn {
+  display: inline-block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4e89ae; /* Light mode button color */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.toggle-btn:hover {
+  background-color: #386fa4;
+}
+
+/* Dark mode toggle button variant */
+body.dark-mode .toggle-btn {
+  background-color: #c56183;
+}
+
+body.dark-mode .toggle-btn:hover {
+  background-color: #a74e6d;
+}
+
 
 
 
