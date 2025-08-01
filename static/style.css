@@ -311,6 +311,20 @@ body.dark-mode .toggle-btn:hover {
   padding-bottom: 8px;
   border-bottom: 1px solid #ccc;
 }
+.clear-btn {
+  background-color: #ffdddd;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.clear-btn:hover {
+  background-color: #ffbbbb;
+}
+
 
 
 
