@@ -2,7 +2,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()  # Load variables from .env
+load_dotenv()  # Load environment variables
 
 def translate_text(text, target_lang):
     url = "https://text-translator2.p.rapidapi.com/translate"
@@ -15,7 +15,7 @@ def translate_text(text, target_lang):
 
     headers = {
         "content-type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": os.getenv("RAPIDAPI_KEY"),  # Loaded securely
+        "X-RapidAPI-Key": os.getenv("RAPIDAPI_KEY"),
         "X-RapidAPI-Host": "text-translator2.p.rapidapi.com"
     }
 
@@ -23,6 +23,10 @@ def translate_text(text, target_lang):
         response = requests.post(url, data=payload, headers=headers)
         response.raise_for_status()
         result = response.json()
-        return result["data"]["translatedText"]
+
+        translated_text = result["data"]["translatedText"]
+        detected_lang = result["data"].get("detectedSourceLanguage", "unknown")  # fallback if not provided
+
+        return translated_text, detected_lang
     except Exception as e:
-        return f"Error during translation: {e}"
+        return f"Error during translation: {e}", ""
