@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "some-default-secret")  # Needed for session
+app.secret_key = os.getenv("SECRET_KEY", "some-default-secret")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -20,18 +20,18 @@ def index():
         target_lang = request.form["language"]
         translated_text, detected_lang = translate_text(original_text, target_lang)
 
-        # Add to history
+        # Add translation to history with correct key names for index.html
         session["history"].insert(0, {
-            "original": original_text,
+            "text": original_text,
             "translated": translated_text,
-            "source": detected_lang,
-            "target": target_lang
+            "language": target_lang
         })
 
         # Limit history to 5 items
         session["history"] = session["history"][:5]
 
-    return render_template("index.html", translated_text=translated_text,
+    return render_template("index.html",
+                           translated_text=translated_text,
                            detected_lang=detected_lang,
                            history=session.get("history", []))
 
