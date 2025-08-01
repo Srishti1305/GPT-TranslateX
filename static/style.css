@@ -269,6 +269,31 @@ body.dark-mode .toggle-btn:hover {
   font-size: 0.95rem;
   text-align: center;
 }
+.history-panel {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--bg-light-alt);
+  color: var(--text-color);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.history-panel h2 {
+  margin-bottom: 0.5rem;
+}
+
+.history-panel ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history-panel li {
+  margin-bottom: 1rem;
+  background-color: var(--bg-dark);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
 
 
 
