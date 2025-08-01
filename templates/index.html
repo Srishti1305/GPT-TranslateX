@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Logo -->
   <img src="{{ url_for('static', filename='logo.png') }}" alt="GPT TranslateX Logo" class="corner-logo">
 
   <!-- Theme Toggle Button -->
@@ -19,7 +18,6 @@
   <div class="container">
     <h1>🌐 GPT TranslateX</h1>
 
-    <!-- Translation Form -->
     <form method="POST" id="translateForm">
       <label for="text">Enter text to translate:</label>
       <textarea name="text" rows="5" placeholder="Type your text here..." required></textarea>
@@ -58,14 +56,28 @@
       <div class="spinner" id="spinner" style="display: none;"></div>
     </form>
 
-    <!-- Output Section -->
     {% if translated_text %}
-      {% if detected_lang %}
-        <p class="detected">Detected Language: <strong>{{ detected_lang }}</strong></p>
-      {% endif %}
-      <div class="output" id="translationBox">{{ translated_text }}</div>
+      <div class="output" id="translationBox">
+        <p><strong>Detected Language:</strong> {{ detected_lang.upper() }}</p>
+        <p>{{ translated_text }}</p>
+      </div>
       <div class="button-group">
         <button onclick="copyText()">📋 Copy Translated Text</button>
+      </div>
+    {% endif %}
+
+    {% if history and history|length > 0 %}
+      <div class="history-panel">
+        <h2>🕘 Recent Translations</h2>
+        <ul>
+          {% for entry in history %}
+            <li>
+              <strong>From ({{ entry.source.upper() }}) → {{ entry.target.upper() }}:</strong><br>
+              <em>{{ entry.original }}</em><br>
+              <span>{{ entry.translated }}</span>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     {% endif %}
   </div>
@@ -102,13 +114,11 @@
       setTimeout(() => toast.classList.remove("show"), 2500);
     }
 
-    // Theme toggle logic
+    // Theme toggle logic with localStorage
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "dark") {
       document.body.classList.add("dark-mode");
       toggleIcon.textContent = "☀️ Light Mode";
-    } else {
-      toggleIcon.textContent = "🌙 Dark Mode";
     }
 
     toggleBtn.addEventListener("click", () => {
