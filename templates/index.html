@@ -68,23 +68,24 @@
     </div>
     {% endif %}
 
-    
-
     {% if history %}
-<div class="history">
-  <h2>Recent Translations</h2>
-  <ul>
-    {% for item in history %}
-    <li><strong>{{ item.text }}</strong> → <em>{{ item.translated }}</em> ({{ item.language }})</li>
-    {% endfor %}
-  </ul>
-  <form method="POST" style="margin-top: 10px;">
-    <input type="hidden" name="action" value="clear">
-    <button type="submit" class="clear-btn">🗑️ Clear History</button>
-  </form>
-</div>
-{% endif %}
-
+    <div class="history">
+      <h2>Recent Translations</h2>
+      <ul>
+        {% for item in history %}
+        <li>
+          <strong>{{ item.text }}</strong> →
+          <em>{{ item.translated }}</em>
+          <small>({{ item.source }} → {{ item.target }})</small>
+        </li>
+        {% endfor %}
+      </ul>
+      <form method="POST" style="margin-top: 10px;">
+        <input type="hidden" name="action" value="clear">
+        <button type="submit" class="clear-btn">🗑️ Clear History</button>
+      </form>
+    </div>
+    {% endif %}
   </div>
 
   <div id="toast" class="toast">Copied to clipboard ✅</div>
