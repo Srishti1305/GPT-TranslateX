@@ -54,6 +54,10 @@
       <input type="submit" value="Translate">
       <div class="spinner" id="spinner" style="display: none;"></div>
     </form>
+    
+    {% if detected_lang %}
+    <p class="detected-lang">Detected Source Language: <strong>{{ detected_lang }}</strong></p>
+    {% endif %}
 
     {% if translated_text %}
     <div class="output" id="translationBox">
@@ -64,9 +68,7 @@
     </div>
     {% endif %}
 
-    {% if detected_lang %}
-    <p class="detected-lang">Detected Source Language: <strong>{{ detected_lang }}</strong></p>
-    {% endif %}
+    
 
     {% if history %}
     <div class="history-panel">
