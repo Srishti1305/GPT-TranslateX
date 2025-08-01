@@ -8,10 +8,18 @@
   <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Logo -->
   <img src="{{ url_for('static', filename='logo.png') }}" alt="GPT TranslateX Logo" class="corner-logo">
+
+  <!-- Theme Toggle Button -->
+  <button id="themeToggle" class="toggle-btn">
+    <span id="toggleIcon">🌙 Dark Mode</span>
+  </button>
 
   <div class="container">
     <h1>🌐 GPT TranslateX</h1>
+
+    <!-- Translation Form -->
     <form method="POST" id="translateForm">
       <label for="text">Enter text to translate:</label>
       <textarea name="text" rows="5" placeholder="Type your text here..." required></textarea>
@@ -50,20 +58,16 @@
       <div class="spinner" id="spinner" style="display: none;"></div>
     </form>
 
+    <!-- Output Section -->
     {% if translated_text %}
-    <div class="output" id="translationBox">
-      {{ translated_text }}
-    </div>
-    {% endif %}
-
-    <div class="button-group">
-      {% if translated_text %}
-      <button onclick="copyText()">📋 Copy Translated Text</button>
+      {% if detected_lang %}
+        <p class="detected">Detected Language: <strong>{{ detected_lang }}</strong></p>
       {% endif %}
-      <button id="themeToggle" type="button" class="toggle-btn">
-        <span id="toggleIcon">🌙 Dark Mode</span>
-      </button>
-    </div>
+      <div class="output" id="translationBox">{{ translated_text }}</div>
+      <div class="button-group">
+        <button onclick="copyText()">📋 Copy Translated Text</button>
+      </div>
+    {% endif %}
   </div>
 
   <!-- Toast Notification -->
