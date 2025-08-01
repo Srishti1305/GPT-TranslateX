@@ -262,6 +262,14 @@ body.dark-mode .toggle-btn {
 body.dark-mode .toggle-btn:hover {
   background-color: #a74e6d;
 }
+.detected {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #888;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 
 
 
