@@ -57,35 +57,34 @@
     </form>
 
     {% if translated_text %}
-      <div class="output" id="translationBox">
-        <p><strong>Detected Language:</strong> {{ detected_lang.upper() }}</p>
-        <p>{{ translated_text }}</p>
-      </div>
-      <div class="button-group">
-        <button onclick="copyText()">📋 Copy Translated Text</button>
-      </div>
+    <div class="output" id="translationBox">
+      <strong>Detected Language:</strong> {{ detected_lang }}<br>
+      <strong>Translated:</strong><br> {{ translated_text }}
+    </div>
+    <div class="button-group">
+      <button onclick="copyText()">📋 Copy Translated Text</button>
+    </div>
     {% endif %}
 
-    {% if history and history|length > 0 %}
-      <div class="history-panel">
-        <h2>🕘 Recent Translations</h2>
-        <ul>
-          {% for entry in history %}
-            <li>
-              <strong>From ({{ entry.source.upper() }}) → {{ entry.target.upper() }}:</strong><br>
-              <em>{{ entry.original }}</em><br>
-              <span>{{ entry.translated }}</span>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+    {% if history %}
+    <div class="history">
+      <h3>🕓 Recent Translations</h3>
+      <ul>
+        {% for item in history %}
+          <li>
+            <strong>From ({{ item.source }}) to ({{ item.target }}):</strong><br>
+            <em>{{ item.original }}</em><br>
+            → {{ item.translated }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
     {% endif %}
   </div>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast">Copied to clipboard ✅</div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
   <script>
     new TomSelect('#language', {
@@ -114,7 +113,7 @@
       setTimeout(() => toast.classList.remove("show"), 2500);
     }
 
-    // Theme toggle logic with localStorage
+    // Theme toggle logic
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "dark") {
       document.body.classList.add("dark-mode");
