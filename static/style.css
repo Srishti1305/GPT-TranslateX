@@ -302,3 +302,15 @@ input[type="submit"]:hover {
     font-size: 0.95rem;
   }
 }
+.footer {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 40px;
+  padding: 1rem 0;
+  color: #777;
+}
+
+body.dark-mode .footer {
+  color: #aaa;
+}
+
