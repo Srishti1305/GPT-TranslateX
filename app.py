@@ -7,6 +7,15 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "some-default-secret")
+languages = {
+    "en": "English", "hi": "Hindi", "es": "Spanish", "fr": "French", "de": "German",
+    "ar": "Arabic", "zh": "Chinese", "ru": "Russian", "ja": "Japanese", "ko": "Korean",
+    "pt": "Portuguese", "it": "Italian", "tr": "Turkish", "pl": "Polish", "nl": "Dutch",
+    "sv": "Swedish", "uk": "Ukrainian", "ro": "Romanian", "cs": "Czech", "fi": "Finnish",
+    "el": "Greek", "he": "Hebrew", "id": "Indonesian", "vi": "Vietnamese", "th": "Thai",
+    # ✅ Add more from RapidAPI docs (you can paste 100+ entries here)
+}
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -33,10 +42,11 @@ def index():
 
             session["history"] = session["history"][:5]
 
-    return render_template("index.html",
-                           translated_text=translated_text,
-                           detected_lang=detected_lang,
-                           history=session.get("history", []))
+    return render_template("index.html", translated_text=translated_text,
+                       detected_lang=detected_lang,
+                       history=session.get("history", []),
+                       languages=languages)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
