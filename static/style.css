@@ -330,10 +330,6 @@ body.dark-mode .footer {
   box-shadow: 0 5px 12px rgba(166, 74, 201, 0.5);
 }
 
-/* Dark mode support */
-.dark-mode .voice-btn {
-  background: linear-gradient(135deg, #7f7fd5, #86a8e7);
-  color: #fff;
-}
+
 
 
