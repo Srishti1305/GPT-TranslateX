@@ -18,7 +18,7 @@
   <div class="container">
     <h1>🌐 GPT TranslateX</h1>
     <form method="POST" id="translateForm">
-      <button type="button" onclick="startListening()">🎙️ Speak</button>
+      <button type="button" onclick="startListening()" class="voice-btn">🎙️ Speak</button>
       <label for="text">Enter text to translate:</label>
       <textarea name="text" rows="5" placeholder="Type your text here..." required></textarea>
 
@@ -44,7 +44,7 @@
     </div>
     <div class="button-group">
       <button onclick="copyText()">📋 Copy Translated Text</button>
-      <button type="button" onclick="speakText()">🔊 Listen</button>
+      <button type="button" onclick="speakText()" class="voice-btn">🔊 Listen</button>
 
     </div>
     {% endif %}
