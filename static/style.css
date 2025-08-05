@@ -317,8 +317,8 @@ body.dark-mode .footer {
   padding: 0.7rem 1.4rem;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(135deg, #a6c1ee, #fbc2eb);
-  color: #333;
+  background: linear-gradient(135deg, #a64ac9, #fcb045);
+  color: #fff;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -327,7 +327,7 @@ body.dark-mode .footer {
 
 .voice-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 12px rgba(166, 74, 201, 0.3);
+  box-shadow: 0 5px 12px rgba(166, 74, 201, 0.5);
 }
 
 /* Dark mode support */
