@@ -148,11 +148,13 @@ input[type="submit"]:hover {
 .button-group {
   margin-top: 1.5rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
 }
 
-.button-group button {
+.button-group button,
+.voice-btn {
   padding: 0.7rem 1.4rem;
   border: none;
   border-radius: 8px;
@@ -161,9 +163,11 @@ input[type="submit"]:hover {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-.button-group button:hover {
+.button-group button:hover,
+.voice-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 5px 12px rgba(166, 74, 201, 0.5);
 }
@@ -253,7 +257,6 @@ input[type="submit"]:hover {
   background-color: #ffbbbb;
 }
 
-/* Dark Mode History */
 .dark-mode .history {
   background-color: #1f1f1f;
   color: #f0f0f0;
@@ -284,24 +287,67 @@ input[type="submit"]:hover {
 
 /* Responsive Design */
 @media (max-width: 600px) {
+  body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   .container {
     margin: 1rem;
     padding: 1.2rem;
+    border-radius: 12px;
   }
 
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 
-  textarea, select {
+  textarea,
+  select,
+  input[type="submit"] {
     font-size: 0.95rem;
+    padding: 0.6rem;
   }
 
-  .button-group button {
+  .toggle-btn {
+    font-size: 14px;
+    padding: 8px 14px;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .button-group button,
+  .voice-btn {
     width: 100%;
     font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .history {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .clear-btn {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .footer {
+    font-size: 0.85rem;
+    padding: 0.8rem 0;
   }
 }
+
+/* Footer */
 .footer {
   text-align: center;
   font-size: 0.95rem;
@@ -313,23 +359,3 @@ input[type="submit"]:hover {
 body.dark-mode .footer {
   color: #aaa;
 }
-.voice-btn {
-  padding: 0.7rem 1.4rem;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #a64ac9, #fcb045);
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.voice-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 12px rgba(166, 74, 201, 0.5);
-}
-
-
-
-
