@@ -6,10 +6,13 @@
 
 ## 🚀 Features
 
-- 🎨 **Pastel-Themed Modern UI** with smooth animations and hover effects  
+- 🎨 **Pastel-Themed Modern UI** with smooth animations and hover effects
+- 🗣️ **Speech-to-Text Input**
+- 🔊 **Text-to-Speech Output**
 - 🌙 **Dark/Light Mode Toggle** with localStorage support  
 - 🌍 **Auto Language Detection** from input  
-- 🌐 **Translate into 25+ Languages**  
+- 🌐 **Translate into 25+ Languages**
+- 🤏 **Touch-Friendly UI Improvements**
 - 🔄 **Animated Spinner** while translating  
 - 📋 **Copy to Clipboard** with toast notification (no intrusive alerts)  
 - 🔍 **Searchable Language Dropdown** (via TomSelect)  
@@ -44,14 +47,7 @@ GPT-TranslateX/
 ---
 
 📱 Future Enhancements
-🗣️ Speech-to-Text Input
-
-🔊 Text-to-Speech Output
-
 💾 Persistent History Saved Across Sessions
-
-🤏 Touch-Friendly UI Improvements
-
 🌍 Language Detection Confidence Display
 
 📝 License
