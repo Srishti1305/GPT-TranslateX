@@ -124,13 +124,19 @@
     recognition.start();
   }
 
-  function speakText() {
-    const text = document.getElementById("translationBox").innerText;
-    if (!text.trim()) return;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en'; // Optional: match selected language
-    speechSynthesis.speak(utterance);
-  }
+   function speakText() {
+     const text = document.getElementById("translationBox").innerText;
+     if (!text.trim()) return;
+
+     const languageSelect = document.getElementById("language");
+     const selectedLang = languageSelect.value;
+
+     const utterance = new SpeechSynthesisUtterance(text);
+     utterance.lang = selectedLang || 'en'; // Use selected language or default to English
+
+     speechSynthesis.speak(utterance);
+}
+
 
   </script>
   <footer class="footer">
