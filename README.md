@@ -43,6 +43,9 @@ GPT-TranslateX/
 **Text Translator API by RapidAPI**  
 - **Endpoint:** `https://text-translator2.p.rapidapi.com/translate`  
 - **Supports:** Auto language detection and translation to multiple languages
+## 📸Screenshots
+<img width="1888" height="907" alt="image" src="https://github.com/user-attachments/assets/670abc39-0b07-4df8-bf62-1e9f3f511cb9" />
+
 
 ---
 
