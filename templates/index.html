@@ -18,6 +18,7 @@
   <div class="container">
     <h1>🌐 GPT TranslateX</h1>
     <form method="POST" id="translateForm">
+      <button type="button" onclick="startListening()">🎙️ Speak</button>
       <label for="text">Enter text to translate:</label>
       <textarea name="text" rows="5" placeholder="Type your text here..." required></textarea>
 
@@ -43,6 +44,8 @@
     </div>
     <div class="button-group">
       <button onclick="copyText()">📋 Copy Translated Text</button>
+      <button type="button" onclick="speakText()">🔊 Listen</button>
+
     </div>
     {% endif %}
 
@@ -112,6 +115,23 @@
       toggleIcon.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
       localStorage.setItem("theme", isDark ? "dark" : "light");
     });
+  function startListening() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US'; // Or auto-select from dropdown
+    recognition.onresult = function(event) {
+      document.querySelector("textarea[name='text']").value = event.results[0][0].transcript;
+    };
+    recognition.start();
+  }
+
+  function speakText() {
+    const text = document.getElementById("translationBox").innerText;
+    if (!text.trim()) return;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en'; // Optional: match selected language
+    speechSynthesis.speak(utterance);
+  }
+
   </script>
   <footer class="footer">
   <p>Made with ❤️ by <strong>Srishti Yadav</strong></p>
